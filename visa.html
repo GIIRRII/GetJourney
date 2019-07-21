@@ -380,31 +380,19 @@
     function changeMode() {                                
         debugger;
         $.ajax({
-            url: 'https://stallionvisaservices.in/VisaForm/FormDetails',
+            url: 'https://cors-anywhere.herokuapp.com/https://stallionvisaservices.in/VisaForm/FormDetails',
             type: "POST",
-            contentType: 'text/html; charset=utf-8',
             data: { countryid: $('#ddcountry').val()},
-            xhrFields: {
-        withCredentials: true
-    },
             success: function (response) {
                 if (response!=null) {
-
-                    //Window Settings
-        var w = window.open();
-        //Append Search unordered list
-        $(w.document.body).html(response);
                     debugger;
                     $('#Formtable').html(response);
                 }
             },
-            error: function (xhr, status) {
-        // handle errors
-    },headers: {
-                    'Access-Control-Allow-Origin': '*'
-                },
+            headers: {'x-requested-with': 'XMLHttpRequest'}
         });
     }
+
 
 </script>
 
